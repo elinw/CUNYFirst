@@ -3,8 +3,8 @@
 #' If you have not read in grades with stringsAsFactors = FALSE you wil get a warning.
 
 gradetonumgrade <- function (x) {
-  library(hash)
-  library(dplyr)
+  requireNamespace('hash')
+  requireNamespace('dplyr')
 
   x$Grade <- as.character(x$Grade)
 
@@ -12,7 +12,7 @@ gradetonumgrade <- function (x) {
   x$Grade[x$Grade == ""]<-"IP"
 
   # Create hash
-  gradehash <- hash("A" = 4,
+  gradehash <- hash::hash("A" = 4,
                     "A-" = 3.75,
                     "B+" = 3.25,
                     "B" = 3,
@@ -39,7 +39,7 @@ gradetonumgrade <- function (x) {
                     "W" = NA,
                     "P" = NA  )
 
-  newx <- mutate(x, numgrade = values(gradehash, keys = x$Grade))
+  newx <- dplyr::mutate(x, numgrade = hash::values(gradehash, keys = x$Grade))
   names(newx$numgrade) <- NULL
 
   newx

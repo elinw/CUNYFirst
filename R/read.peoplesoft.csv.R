@@ -4,8 +4,8 @@
 
 read.peoplesoft.csv <- function(filename)
 {
-  library("R.utils")
-  nlines <- countLines(filename)
+  requireNamespace("R.utils")
+  nlines <- R.utils::countLines(filename)
   data <-readLines(filename)
   skiplast <- data[-nlines]
   df <- read.csv(textConnection(skiplast), stringsAsFactors = FALSE)

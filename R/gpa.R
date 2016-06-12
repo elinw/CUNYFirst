@@ -12,11 +12,11 @@
 
 gpa<-function(x, ID = ID, numericgrade = numericgrade, Unit.Taken = Unit.Taken)
 {
-  library(dplyr)
-  bystudent <- group_by(x, ID)
+  requireNamespace('dplyr')
+  bystudent <- dplyr::group_by(x, ID)
 
-  gpa.c<-summarise(bystudent, gpa.calc = weighted.mean(numericgrade, Unit.Taken, na.rm = TRUE), Total.Units = sum(Unit.Taken))
-  ncourses<-tally(bystudent)
+  gpa.c<-dplyr::summarise(bystudent, gpa.calc = weighted.mean(numericgrade, Unit.Taken, na.rm = TRUE), Total.Units = sum(Unit.Taken))
+  ncourses<-dplyr::tally(bystudent)
   summary<-merge(gpa.c,ncourses)
   summary
 }

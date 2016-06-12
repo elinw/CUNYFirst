@@ -4,10 +4,11 @@ Title: Some Utilities for CUNYFIrst Data
 Version: 0.1
 Date: 2016-01-04
 Authors@R: person("Elin", "Waring", email = "elin.waring@gmail.com", role = c("aut", "cre"))
-Description: Some functions I use for handling CUNYFirst data
-License: GPL v3+
+Description: These are some functions I use for handling CUNYFirst data.
+License: GPL 3
 LazyData: TRUE
 Imports:
         hash,
-        dplyr
+        dplyr,
+        R.utils
 Suggests: testthat
