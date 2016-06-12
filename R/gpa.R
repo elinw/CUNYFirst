@@ -6,13 +6,16 @@
 #' @param x  Dataframe containing student-course data including ID and numericgrades.
 #' @param ID EmplID variable name.
 #' @param  numericgrade  Name for columns containing grades in numeric format.
+#' @param Unit.Taken  Name for column representing the number of units for a course in integer format.
 #' ID refers to student EmplID. Numericgrades can be created with gradetonumgrade()
+#' Note that this does not account for credits at this time.
 
-gpa<-function(x, ID = ID, numericgrade = numericgrade)
+gpa<-function(x, ID = ID, numericgrade = numericgrade, Unit.Taken = Unit.Taken)
 {
   library(dplyr)
   bystudent <- group_by(x, ID)
-  gpa.c<-summarise(bystudent, gpa.calc = mean(numericgrades, na.rm = TRUE))
+
+  gpa.c<-summarise(bystudent, gpa.calc = weighted.mean(numericgrade, Unit.Taken, na.rm = TRUE), Total.Units = sum(Unit.Taken))
   ncourses<-tally(bystudent)
   summary<-merge(gpa.c,ncourses)
   summary
