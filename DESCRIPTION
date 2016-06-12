@@ -7,3 +7,7 @@ Authors@R: person("Elin", "Waring", email = "elin.waring@gmail.com", role = c("a
 Description: Some functions I use for handling CUNYFirst data
 License: GPL v3+
 LazyData: TRUE
+Imports:
+        hash,
+        dplyr
+Suggests: testthat
