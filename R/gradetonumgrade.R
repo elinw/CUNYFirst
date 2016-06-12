@@ -1,6 +1,5 @@
-# Function to convert letter grades to numbers
+#' Function to convert letter grades to numbers.
 #' @param x is a dataframe containing the Grade field from CUNYFirst
-#' If you have not read in grades with stringsAsFactors = FALSE you wil get a warning.
 
 gradetonumgrade <- function (x) {
   requireNamespace('hash')
