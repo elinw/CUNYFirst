@@ -36,7 +36,8 @@ gradetonumgrade <- function (x) {
                     "&C+" = 2.25,
                     "IP" = NA,
                     "W" = NA,
-                    "P" = NA  )
+                    "P" = NA,
+                    "Z" = NA)
 
   newx <- dplyr::mutate(x, numgrade = hash::values(gradehash, keys = x$Grade))
   names(newx$numgrade) <- NULL

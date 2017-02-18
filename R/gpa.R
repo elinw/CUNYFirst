@@ -10,7 +10,6 @@
 #' @param  numericgrade  Name for columns containing grades in numeric format.
 #' @param Unit.Taken  Name for column representing the number of units for a course in integer format.
 #' ID refers to student EmplID. Numericgrades can be created with gradetonumgrade()
-#' Note that this does not account for credits at this time.
 
 gpa<-function(x, ID = ID, numericgrade = numericgrade, Unit.Taken = Unit.Taken)
 {
